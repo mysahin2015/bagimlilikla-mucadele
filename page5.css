@@ -164,6 +164,8 @@ span {
 .FP {
   margin-bottom: 3rem;
   display: flex;
+  max-width: 100%;
+  overflow: auto;
 }
 
 .box {
