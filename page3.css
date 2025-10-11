@@ -1,0 +1,93 @@
+body {
+  background-color:maroon;
+}
+
+p.frame {
+background-color:navajowhite;
+width: 300px;
+padding: 50px;
+border: 15px solid rgb(7, 132, 30);
+}
+
+h1.green {
+color: greenyellow;
+}
+
+CSS {
+  margin: 120px;
+  border: 5px solid #4CAF50;
+  font-size: 30px;
+  color: cyan;
+}
+
+p.intoabox {
+  width: 50%;
+  padding: 70px;
+  border: 1px solid #4CAF50;
+}
+
+p.mixed {
+  border-bottom-style: dotted;
+  border-left-style: solid;
+  border-right-style: solid;
+  border-top-style: dotted;
+}
+p.hidden {
+border-style: hidden;
+}
+p.verybig {
+  border-style: dashed;
+  border-width: initial;
+  border-color: chartreuse;
+}
+p.verysmall {
+  border-style: dotted;
+  border-width: thin;
+  border-color: aqua;
+}
+
+p.dotted {
+  border-style: dotted;
+}
+
+p.dashed {
+  border-style: dashed;
+}
+
+p.groove {
+  border-style: groove;
+}
+
+p.big {
+  font-size: 25px;
+}
+
+a3 {
+  font-size:x-large;
+  font-family:monospace;
+}
+
+h1.one {
+  color: white;
+  text-align: center;
+  font-size: 25px;
+}
+
+h1 {
+  color: white;
+  text-align: center;
+}
+
+p3{
+  color: dodgerblue;
+}
+
+p2{
+  font-family: sans-serif;
+  font-size: 35px;
+}
+
+p1 {
+  font-family: sans-serif;
+  font-size: 25px;
+}
