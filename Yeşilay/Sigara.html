@@ -1,0 +1,299 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sigara Bağımlılık Testi</title>
+
+    <style>
+        body {
+            background-color: #f0f2f5;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            font-size: 17px;
+            line-height: 1.6;
+            margin: 40px auto;
+            max-width: 650px;
+            padding: 20px;
+            color: #333;
+        }
+
+        .container {
+            background-color: #ffffff;
+            border-radius: 15px;
+            padding: 30px;
+            box-shadow: 0 8px 30px rgba(0,0,0,0.08);
+            border: 1px solid #e1e8ed;
+        }
+
+        h1 {
+            color: #2c3e50;
+            text-align: center;
+            border-bottom: 3px solid #27ae60;
+            padding-bottom: 15px;
+            margin-bottom: 30px;
+            font-weight: 700;
+        }
+
+        .question-block {
+            margin-bottom: 25px;
+            padding: 15px;
+            border-radius: 10px;
+            background-color: #fdfdfd;
+            border: 1px solid #f0f0f0;
+            transition: all 0.3s ease;
+        }
+
+        .question-block:hover {
+            background-color: #f7fffb;
+            border-color: #27ae60;
+            transform: translateY(-2px);
+        }
+
+        label.question-text {
+            font-weight: 600;
+            display: block;
+            margin-bottom: 12px;
+            color: #2c3e50;
+        }
+
+        .options-group {
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+        }
+
+        .option {
+            display: flex;
+            align-items: center;
+            cursor: pointer;
+            font-size: 16px;
+            padding: 5px;
+            border-radius: 5px;
+            transition: background 0.2s;
+        }
+
+        .option:hover {
+            background-color: #e8f5e9;
+        }
+
+        input[type="radio"] {
+            margin-right: 12px;
+            width: 18px;
+            height: 18px;
+            cursor: pointer;
+            accent-color: #27ae60;
+        }
+
+        #submit-btn {
+            display: block;
+            width: 100%;
+            padding: 16px;
+            background-color: #27ae60;
+            color: white;
+            border: none;
+            font-size: 18px;
+            font-weight: bold;
+            cursor: pointer;
+            border-radius: 8px;
+            margin-top: 20px;
+            transition: background-color 0.3s, transform 0.2s;
+            box-shadow: 0 4px 15px rgba(39, 174, 96, 0.3);
+        }
+
+        #submit-btn:hover {
+            background-color: #219150;
+            transform: scale(1.01);
+        }
+
+        #submit-btn:active {
+            transform: scale(0.99);
+        }
+
+        .footer-note {
+            font-size: 14px;
+            color: #95a5a6;
+            text-align: center;
+            margin-top: 25px;
+            font-style: italic;
+        }
+        .back-link {
+            font-size: 200%;
+            text-decoration: none;
+            color: #2c3e50;
+            margin-bottom: 20px;
+            display: inline-block;
+            padding: 0%;
+            margin: 0%;
+        }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <a class="back-link" href="Adsoyad.html">&#8617;</a>
+    <h1>Sigara Bağımlılık Testi</h1>
+
+    <form id="sigaraTesti">
+        <div class="question-block">
+            <label class="question-text">1. Gün içinde düşündüğünüzden fazla sigara içtiğiniz oluyor mu?</label>
+            <div class="options-group">
+                <label class="option"><input type="radio" name="q1" value="10" required> Evet</label>
+                <label class="option"><input type="radio" name="q1" value="5"> Bazen</label>
+                <label class="option"><input type="radio" name="q1" value="0"> Hayır</label>
+            </div>
+        </div>
+
+        <div class="question-block">
+            <label class="question-text">2. Günde kaç sigara içiyorsunuz?</label>
+            <div class="options-group">
+                <label class="option"><input type="radio" name="q2" value="10"> Çok (16+)</label>
+                <label class="option"><input type="radio" name="q2" value="5"> Orta (6-15)</label>
+                <label class="option"><input type="radio" name="q2" value="0"> Az (1-5)</label>
+            </div>
+        </div>
+
+        <div class="question-block">
+            <label class="question-text">3. "Bu son sigara" deyip kısa süre sonra tekrar içtiğiniz oluyor mu?</label>
+            <div class="options-group">
+                <label class="option"><input type="radio" name="q3" value="10"> Evet</label>
+                <label class="option"><input type="radio" name="q3" value="5"> Bazen</label>
+                <label class="option"><input type="radio" name="q3" value="0"> Hayır</label>
+            </div>
+        </div>
+
+        <div class="question-block">
+            <label class="question-text">4. Stresli veya moraliniz bozuk olduğunda sigaraya yöneliyor musunuz?</label>
+            <div class="options-group">
+                <label class="option"><input type="radio" name="q4" value="10"> Evet</label>
+                <label class="option"><input type="radio" name="q4" value="5"> Bazen</label>
+                <label class="option"><input type="radio" name="q4" value="0"> Hayır</label>
+            </div>
+        </div>
+
+        <div class="question-block">
+            <label class="question-text">5. Sigara kullanımınızda bir artış var mı?</label>
+            <div class="options-group">
+                <label class="option"><input type="radio" name="q5" value="10"> Var</label>
+                <label class="option"><input type="radio" name="q5" value="5"> Hafif var</label>
+                <label class="option"><input type="radio" name="q5" value="0"> Hiç yok</label>
+            </div>
+        </div>
+
+        <div class="question-block">
+            <label class="question-text">6. Sigara içmek için bulunduğunuz ortamdan ayrılıyor musunuz?</label>
+            <div class="options-group">
+                <label class="option"><input type="radio" name="q6" value="10"> Evet</label>
+                <label class="option"><input type="radio" name="q6" value="5"> Nadiren</label>
+                <label class="option"><input type="radio" name="q6" value="0"> Hayır</label>
+            </div>
+        </div>
+
+        <div class="question-block">
+            <label class="question-text">7. Sigara içmediğiniz zaman nasıl hissediyorsunuz?</label>
+            <div class="options-group">
+                <label class="option"><input type="radio" name="q7" value="10"> Huysuz ve öfkeli</label>
+                <label class="option"><input type="radio" name="q7" value="5"> Pek iyi değil</label>
+                <label class="option"><input type="radio" name="q7" value="0"> Normal</label>
+            </div>
+        </div>
+
+        <div class="question-block">
+            <label class="question-text">8. Yakın çevreniz sizi bu konuda uyardı mı?</label>
+            <div class="options-group">
+                <label class="option"><input type="radio" name="q8" value="10"> Evet, sürekli</label>
+                <label class="option"><input type="radio" name="q8" value="5"> Bazen</label>
+                <label class="option"><input type="radio" name="q8" value="0"> Hayır, hiç</label>
+            </div>
+        </div>
+
+        <div class="question-block">
+            <label class="question-text">9. Sigara içmekten vazgeçmeyi düşündünüz mü?</label>
+            <div class="options-group">
+                <label class="option"><input type="radio" name="q9" value="10"> Hiç düşünmedim</label>
+                <label class="option"><input type="radio" name="q9" value="5"> Aklımdan geçirdim</label>
+                <label class="option"><input type="radio" name="q9" value="0"> Evet, ciddi ciddi</label>
+            </div>
+        </div>
+
+        <div class="question-block">
+            <label class="question-text">10. Sigara alışkanlığınızın günlük hayatı etkilediğini düşünüyor musunuz?</label>
+            <div class="options-group">
+                <label class="option"><input type="radio" name="q10" value="10"> Evet</label>
+                <label class="option"><input type="radio" name="q10" value="5"> Biraz</label>
+                <label class="option"><input type="radio" name="q10" value="0"> Hayır</label>
+            </div>
+        </div>
+
+        <button type="submit" id="submit-btn">Sonucu Gör</button>
+    </form>
+   <!-- Gizli Sonuç Kutusu -->
+<div id="result-box" style="display:none; margin-top: 25px; padding: 20px; border-radius: 12px; background: #f0fff4; border: 2px solid #27ae60;">
+    <h3 id="res-title" style="color: #1e5d3b; margin-top: 0;"></h3>
+    <p id="res-score" style="font-weight: bold; color: #27ae60;"></p>
+    <div id="res-suggestions" style="text-align: left; font-size: 15px;"></div>
+    <button onclick="location.reload()" style="margin-top:15px; padding: 10px 20px; background:#27ae60; color:white; border:none; border-radius:5px; cursor:pointer;">Testi Tekrarla</button>
+</div> 
+    <p class="footer-note">Bu test bir öz-değerlendirme aracıdır. Ciddi bağımlılık durumlarında lütfen tıbbi destek alınız.</p>
+</div>
+
+<script>
+ document.getElementById('sigaraTesti').addEventListener('submit', function(event) {
+    event.preventDefault();
+
+    const formData = new FormData(this);
+    let toplamPuan = 0;
+    for (let value of formData.values()) {
+        toplamPuan += parseInt(value);
+    }
+
+    // Formu gizle, sonuç kutusunu göster
+    document.getElementById('sigaraTesti').style.display = 'none';
+    const resultBox = document.getElementById('result-box');
+    resultBox.style.display = 'block';
+
+    const resTitle = document.getElementById('res-title');
+    const resScore = document.getElementById('res-score');
+    const resSugg = document.getElementById('res-suggestions');
+
+    resScore.innerText = "Bağımlılık Skorunuz: %" + toplamPuan;
+
+    if (toplamPuan <= 30) {
+        resTitle.innerText = "🌱 Düşük Seviye Bağımlılık";
+        resSugg.innerHTML = `
+            <p>Tebrikler! Fiziksel bağımlılığın çok düşük. İşte kurtulman için 5 altın öneri:</p>
+            <ul style="list-style-type: '✔ '; padding-left: 20px;">
+                <li><b>Rutin Değişimi:</b> Sigara içme isteği uyandıran alışkanlıklarını (kahve, mekan vb.) değiştir.</li>
+                <li><b>5 Dakika Kuralı:</b> İstek geldiğinde 5 dakika bekle; isteğin söndüğünü göreceksin.</li>
+                <li><b>Oral İkame:</b> El ve ağız alışkanlığı için yanında karanfil veya şekersiz sakız bulundur.</li>
+                <li><b>Görünmezlik:</b> Çakmak ve paketini göz önünden kaldır, ulaşmanı zorlaştır.</li>
+                <li><b>Mikro Egzersiz:</b> Kriz anında 10 derin nefes al veya kısa bir yürüyüş yap.</li>
+            </ul>
+        `;
+    } else if (toplamPuan <= 70) {
+        resTitle.innerText = "⚠️ Orta Seviye Bağımlılık";
+        resSugg.innerHTML = `
+            <ul style="list-style-type: '✔ '; padding-left: 20px;">
+                <li><b>Profesyonel Tıbbi Destek:</b> Yüksek seviye bağımlılıklarda vücut, nikotin eksikliğine şiddetli tepki verir. Kendi başınıza "soğuk hindi" (birden bırakma) yöntemiyle savaşmak yerine bir uzmana danışın. Farmokolojik destek için ise Doktor kontrolünde kullanılan nikotin replasman tedavileri (bantlar, sakızlar) veya nikotin içermeyen ilaçlar, yoksunluk krizlerinin şiddetini %50 ile %70 oranında azaltabilir. ALO 171 gibi hatları kullanabilirsiniz.</li>
+                <li><b>"Tetikleyici" haritası çıkarın:</b> Sigara içme eylemi genellikle belirli ritüellerle eşleşmiştir. Bu bağları koparmak, zihinsel bağımlılığı bitirmenin anahtarıdır. Önce sebebi analiz edin. Kahveyle mi, yemekten sonra mı, yoksa stres anında mı içiyorsunuz? Sonra bu tetikleyicileri ortadan yavaş yavaş kaldırın veya alternatiflerle değiştirmeye çalışın.</li>
+                <li><b>Çevrenizi yenileyin:</b> Beyin, görsel ve kokusal uyaranlarla tetiklenir. Eski kimliğinizden kalan izleri silin. Çevrenizi temizlemekle başlayın. Evinizi, arabanızı ve kıyafetlerinizi profesyonelce temizletin. O "tanıdık" koku sizi geri çekmemeli. 2. Adım olarak ise sigaraya erişimi zorlaştırın. Çakmakları çöpe atın, kültablalarını kaldırın. "Acil durum için bir dal kalsın" düşüncesi, başarısızlığın ilk adımıdır.</li>
+                <li><b>Dopamin kaynaklarını çeşitlendirin:</b>Sigara, beyindeki ödül mekanizmasını (dopamin) yapay yolla tetikler. Sigarayı bıraktığınızda oluşacak boşluğu sağlıklı bir şeyle doldurmazsanız, depresif hissedebilirsiniz. Sigara içmek yerine, spor, müzik, sanat gibi aktivitelerle dopamin üretimini artırın.</li>
+                <li><b>5 Dakika Kuralı:</b> İstek geldiğinde 5 dakika bekle; isteğin söndüğünü göreceksin.</li>
+            </ul>
+        `;
+    } else {
+        resTitle.innerText = "⚠️ Yüksek Seviye Bağımlılık";
+        resSugg.innerHTML = `
+            <ul style="list-style-type: '✔ '; padding-left: 20px;">
+                <li><b>Profesyonel Tıbbi Destek:</b> Yüksek seviye bağımlılıklarda vücut, nikotin eksikliğine şiddetli tepki verir. Kendi başınıza "soğuk hindi" (birden bırakma) yöntemiyle savaşmak yerine bir uzmana danışın. Farmokolojik destek için ise Doktor kontrolünde kullanılan nikotin replasman tedavileri (bantlar, sakızlar) veya nikotin içermeyen ilaçlar, yoksunluk krizlerinin şiddetini %50 ile %70 oranında azaltabilir. ALO 171 gibi hatları kullanabilirsiniz.</li>
+                <li><b>"Tetikleyici" haritası çıkarın:</b> Sigara içme eylemi genellikle belirli ritüellerle eşleşmiştir. Bu bağları koparmak, zihinsel bağımlılığı bitirmenin anahtarıdır. Önce sebebi analiz edin. Kahveyle mi, yemekten sonra mı, yoksa stres anında mı içiyorsunuz? Sonra bu tetikleyicileri ortadan yavaş yavaş kaldırın veya alternatiflerle değiştirmeye çalışın.</li>
+                <li><b>Çevrenizi yenileyin:</b> Beyin, görsel ve kokusal uyaranlarla tetiklenir. Eski kimliğinizden kalan izleri silin. Çevrenizi temizlemekle başlayın. Evinizi, arabanızı ve kıyafetlerinizi profesyonelce temizletin. O "tanıdık" koku sizi geri çekmemeli. 2. Adım olarak ise sigaraya erişimi zorlaştırın. Çakmakları çöpe atın, kültablalarını kaldırın. "Acil durum için bir dal kalsın" düşüncesi, başarısızlığın ilk adımıdır.</li>
+                <li><b>Dopamin kaynaklarını çeşitlendirin:</b>Sigara, beyindeki ödül mekanizmasını (dopamin) yapay yolla tetikler. Sigarayı bıraktığınızda oluşacak boşluğu sağlıklı bir şeyle doldurmazsanız, depresif hissedebilirsiniz. Sigara içmek yerine, spor, müzik, sanat gibi aktivitelerle dopamin üretimini artırın.</li>
+                <li><b>5 Dakika Kuralı:</b> İstek geldiğinde 5 dakika bekle; isteğin söndüğünü göreceksin.</li>
+            </ul>
+        `;
+    }
+});
+</script>
+
+</body>
+</html>

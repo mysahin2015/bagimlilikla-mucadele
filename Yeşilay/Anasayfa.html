@@ -1,0 +1,524 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bağımlılıkla Mücadele Portalı</title>
+    <link href="https://fonts.googleapis.com/css2?family=Segoe+UI:wght@300;400;600;700&display=swap" rel="stylesheet">
+    
+    <link rel="manifest" href="manifest.json">
+<script>
+  if ('serviceWorker' in navigator) {
+    navigator.serviceWorker.register('sw.js');
+  }
+</script>
+    
+    <style>
+        :root {
+            /* YEŞİL TEMA RENK DEĞİŞKENLERİ */
+            --primary: #1e5d3b;     /* Koyu Yeşil */
+            --secondary: #27ae60;   /* Ana Yeşil (Yeşilay Yeşili) */
+            --accent: #2ecc71;      /* Açık Vurgu Yeşili */
+            --light-bg: #f4f9f6;    /* Çok açık yeşilimsi gri arka plan */
+            --white: #ffffff;
+            --text: #2c3e50;
+            --border-soft: #e0ece4;
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; }
+        
+        body { background-color: var(--light-bg); color: var(--text); line-height: 1.6; }
+
+        /* Üst Başlık Alanı - Yeşil Gradyan */
+        header {
+            background: linear-gradient(135deg, var(--primary) 0%, var(--secondary) 100%);
+            color: var(--white);
+            padding: 50px 20px;
+            text-align: center;
+            box-shadow: 0 4px 15px rgba(31, 93, 59, 0.2);
+        }
+
+        header h1 { font-size: 2.2rem; letter-spacing: 1px; text-shadow: 1px 1px 3px rgba(0,0,0,0.2); }
+        header p { opacity: 0.9; font-weight: 300; margin-top: 10px; font-size: 1.1rem; }
+
+        /* Ana Konteyner */
+        .container { max-width: 1100px; margin: -40px auto 40px; padding: 0 20px; }
+
+        /* Kart Menüsü (Kutucuklar) */
+        .nav-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+            gap: 15px;
+            margin-bottom: 30px;
+        }
+
+        .nav-card {
+            background: var(--white);
+            padding: 25px 15px;
+            border-radius: 12px;
+            text-align: center;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            box-shadow: 0 6px 12px rgba(0,0,0,0.05);
+            border: 2px solid transparent;
+            color: var(--primary);
+        }
+
+        .nav-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 20px rgba(39, 174, 96, 0.15);
+            border-color: var(--accent);
+        }
+
+        .nav-card.active-card {
+            background: var(--secondary);
+            color: white;
+            border-color: var(--secondary);
+        }
+
+        .nav-card i { font-size: 2rem; display: block; margin-bottom: 10px; }
+        .nav-card h3 { font-size: 0.9rem; font-weight: 700; }
+
+        /* İçerik Bölümleri */
+        .tab-content {
+            display: none;
+            background: var(--white);
+            padding: 40px;
+            border-radius: 15px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.05);
+            animation: fadeIn 0.4s ease;
+            border-bottom: 4px solid var(--secondary);
+        }
+
+        .active-tab { display: block; }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        h2 { color: var(--primary); margin-bottom: 20px; border-left: 6px solid var(--secondary); padding-left: 15px; }
+        h4 { color: var(--secondary); margin-top: 25px; margin-bottom: 10px; font-weight: 700; }
+        p { margin-bottom: 15px; text-align: justify; }
+        
+        .highlight-box {
+            background: #f0fdf4; /* Çok açık yeşil kutu */
+            padding: 20px;
+            border-radius: 10px;
+            border: 1px solid #dcfce7;
+            border-left: 5px solid var(--secondary);
+            margin: 20px 0;
+        }
+
+        strong { color: var(--primary); }
+
+        /* Hazır Mısın Butonu Özel Stili */
+        #ready {
+            font-size: 2.5rem;
+            color: var(--secondary);
+            transition: transform 0.3s ease;
+        }
+
+        #noline {
+            text-decoration: none;
+        }
+
+        .dot::marker {
+            color: var(--secondary);
+            font-size: 1rem;
+        }
+
+        footer { text-align: center; padding: 40px; color: #666; font-size: 0.9rem; background: #e8f3ec; margin-top: 20px; }
+
+        .güvenlik {
+            display: inline-block;
+            margin-top: 20px;
+            padding: 12px 25px;
+            background-color: var(--secondary);
+            color: white;
+            text-decoration: none;
+            border-radius: 10px;
+            transition: background-color 0.3s ease;
+            font-size: 1rem;
+        }
+        
+.styled-table {
+    border-collapse: collapse;
+    margin: 25px 0;
+    font-size: 0.9em;
+    min-width: 100%;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+    border-radius: 10px 10px 0 0;
+    overflow: hidden;
+
+}
+
+.styled-table thead tr {
+    background-color: #27ae60; /* Testindeki yeşil tonu */
+    color: #ffffff;
+    text-align: left;
+    font-weight: bold;
+}
+
+.styled-table th, .styled-table td {
+    padding: 12px 15px;
+    border-bottom: 1px solid #dddddd;
+}
+
+.styled-table tbody tr:nth-of-type(even) {
+    background-color: #f3f3f3;
+}
+
+.styled-table tbody tr:last-of-type {
+    border-bottom: 2px solid #27ae60;
+
+}
+
+    </style>
+</head>
+<body>
+
+<header>
+    <h1>BAĞIMLILIKLA MÜCADELE PORTALI</h1>
+    <p>Yeşil Bir Gelecek İçin Bilgiyle Güçlen</p>
+</header>
+
+<div class="container">
+    <div class="nav-grid">
+        <div class="nav-card active-card" onclick="switchTab(event, 'home')"><i>🏠</i><h3>Ana Sayfa</h3></div>
+        <div class="nav-card" onclick="switchTab(event, 'info')"><i>📚</i><h3>Bilgi Kutusu</h3></div>
+        <div class="nav-card" onclick="switchTab(event, 'action')"><i>🛡️</i><h3>Mücadele</h3></div>
+        <div class="nav-card" onclick="switchTab(event, 'support')"><i>📞</i><h3>Destek Hattı</h3></div>
+        <div class="nav-card" onclick="switchTab(event, 'life')"><i>🌿</i><h3>Sağlıklı Yaşam</h3></div>
+        <a id="noline" class="nav-card" href="Adsoyad.html" target="_blank"><i id="ready">❔</i><h3>Hazır mısın?</h3></a>
+    </div>
+
+    <!-- Ana Sayfa -->
+<div id="home" class="tab-content active-tab">
+    <h2>Web Sitesine Hoş Geldiniz</h2>
+    <p>Bağımlılıkla mücadele yolculuğunuzda size rehberlik etmek için buradayız. Bilgi güçtür; bu yüzden işe öğrenerek başlayabilirsiniz.</p>
+    
+    <div class="highlight-box">
+        <strong>İpucu:</strong> Bağımlılık türleri ve belirtileri hakkında detaylı bilgi almak için yukarıdaki <strong>"Bilgi Kutusu"</strong> kartına tıklayın.
+    </div>
+
+    <a class="güvenlik" href="Güvenlik.html" target="_blank">Güvenlik Ayarlarını Yönet</a>
+</div>
+
+    <!-- Bilgi Kutusu -->
+
+
+<div id="info" class="tab-content">
+        <h2>📚 Kapsamlı Bilgi Rehberi</h2>
+        
+        <div class="highlight-box">
+            <h4>Bağımlılık Nedir?</h4>
+            <p>Tıbbi bir tanımla bağımlılık; beynin ödül, motivasyon ve bellek devrelerindeki kronik bir bozukluktur. Kişi, kendisine ve çevresine zarar verdiğini bildiği halde maddeyi veya davranışı kullanmaya devam eder. Bu bir irade zayıflığı değil, tedavi edilmesi gereken bir <strong>beyin hastalığıdır.</strong></p>
+        </div>
+
+        <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 20px; margin-top: 20px;">
+            <div>
+                <h4>1. Madde Bağımlılıkları</h4>
+                <p>Vücuda dışarıdan alınan kimyasalların beyin kimyasını değiştirmesiyle oluşur:</p>
+                <ul>
+                    <li class="dot"><strong>Alkol ve Sigara:</strong> En yaygın yasal madde bağımlılıklarıdır.</li>
+                    <li class="dot"><strong>Uyuşturucu Maddeler:</strong> Merkezi sinir sistemini doğrudan etkiler.</li>
+                    <li class="dot"><strong>İlaç Bağımlılığı:</strong> Doktor kontrolü dışındaki sakinleştirici ve ağrı kesiciler.</li>
+                </ul>
+            </div>
+            <div>
+                <h4>2. Davranışsal Bağımlılıklar</h4>
+                <p>Herhangi bir madde olmadan, bir eylemin takıntılı şekilde tekrarlanmasıdır:</p>
+                <ul>
+                    <li class="dot"><strong>Teknoloji ve Sosyal Medya:</strong> Dijital dünyadan kopamama hali.</li>
+                    <li class="dot"><strong>Kumar Bağımlılığı:</strong> Maddi/manevi kayıplara rağmen devam etme dürtüsü.</li>
+                    <li class="dot"><strong>Alışveriş/Yeme:</strong> Duygusal boşluğu tüketimle doldurma çabası.</li>
+                </ul>
+            </div>
+        </div>
+
+        <h4 style="margin-top: 30px;">Bağımlılığın Temel Belirtileri</h4>
+        <div style="background: #fff; border: 1px solid var(--border-soft); padding: 20px; border-radius: 10px;">
+            <ul style="list-style-type: none; padding: 0;">
+                <li style="margin-bottom: 10px; border-bottom: 1px dashed #ddd; padding-bottom: 5px;">
+                    📌 <strong>Tolerans Gelişimi:</strong> Aynı etkiyi alabilmek için kullanılan miktarın giderek artması.
+                </li>
+                <li style="margin-bottom: 10px; border-bottom: 1px dashed #ddd; padding-bottom: 5px;">
+                    📌 <strong>Yoksunluk:</strong> Maddeye ulaşılamadığında aşırı huzursuzluk ve sinirlilik hali.
+                </li>
+                <li style="margin-bottom: 10px; border-bottom: 1px dashed #ddd; padding-bottom: 5px;">
+                    📌 <strong>Kontrol Kaybı:</strong> Bırakma girişimlerinin üst üste başarısızlıkla sonuçlanması.
+                </li>
+                <li style="margin-bottom: 10px;">
+                    📌 <strong>Sosyal Bozulma:</strong> İş, okul veya aile hayatındaki sorumlulukların aksamaya başlaması.
+                </li>
+            </ul>
+        </div>
+
+        <p style="margin-top: 25px; font-style: italic; color: var(--primary);">
+            *Unutmayın, iyileşme süreci bir maratondur ve profesyonel destek almak bu sürecin en kritik parçasıdır.
+        </p>
+    </div>
+
+    <div id="action" class="tab-content">
+  
+    <div class="test-results-container">
+    <h2>🚬 Sigara Bağımlılığı Çözüm Önerileri</h2>
+    <table class="styled-table">
+        <thead>
+            <tr>
+                <th>Seviye</th>
+                <th>Durum</th>
+                <th>Çözüm Önerisi</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td><strong>Düşük seviye (Merak)</strong></td>
+                <td>Nadir kullanım </td>
+                <td>Tetikleyici ortamlardan uzak durun.</td>
+            </tr>
+            <tr>
+                <td><strong>Orta seviye (Alışkanlık)</strong></td>
+                <td>Belirli rutinler</td>
+                <td>Rutinlerinizi değiştirin (Kahve yerine çay vb.).</td>
+            </tr>
+             <tr>
+                <td><strong>Yüksek seviye (Bağımlılık)</strong></td>
+                <td>Günlük kullanım</td>
+                <td>Profesyonel destek alın, nikotin replasman terapisi düşünün.</td>
+            <!-- Diğer satırları buraya ekleyebilirsin -->
+        </tbody>
+    </table>
+</div>
+<div class="test-results-container">
+    <h2>Alkol Bağımlılığı Çözüm Önerileri</h2>
+    <table class="styled-table">
+        <thead>
+            <tr>
+                <th>Seviye</th>
+                <th>Durum</th>
+                <th>Çözüm Önerisi</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td><strong>Düşük seviye (Merak)</strong></td>
+                <td>Nadir kullanım </td>
+                <td>Alkol tüketmemeye çalışın ve bunun yerine sağlıklı içecekler / egzersizler tercih edin.</td>
+            </tr>
+            <tr>
+                <td><strong>Orta seviye (Alışkanlık)</strong></td>
+                <td>Belirli rutinler</td>
+                <td>Hayat düzeninizi değiştirin (Alkol yerine su vb.) ve çevrenizden destek alın.</td>
+            </tr>
+             <tr>
+                <td><strong>Yüksek seviye (Bağımlılık)</strong></td>
+                <td>Günlük kullanım</td>
+                <td>Profesyonel destek alın, alkol replasman terapisi düşünün. Aniden bırakmayın, bu size ruh olarak da bedensel olarak da zarar verebilir. Zamanla ve disiplinle bağımlılığınızı giderin.</td>
+            <!-- Diğer satırları buraya ekleyebilirsin -->
+        </tbody>
+    </table>
+</div>
+<div class="test-results-container">
+    <h2>Oyun Bağımlılığı Çözüm Önerileri</h2>
+    <table class="styled-table">
+        <thead>
+            <tr>
+                <th>Seviye</th>
+                <th>Durum</th>
+                <th>Çözüm Önerisi</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td><strong>Düşük seviye (Merak)</strong></td>
+                <td>Nadir kullanım </td>
+                <td>Oyun sürenizi düşürün, ortalama 30-40 dk oyun oynayın.</td>
+            
+            </tr>
+            <tr>
+                <td><strong>Orta seviye (Alışkanlık)</strong></td>
+                <td>Belirli rutinler</td>
+                <td>Sosyal ilişkilerinizin oyundan önemli olduğunu unutmayın. Spor yapın, oyunu hayatınızın merkezinden uzaklaştırın</td>
+            </tr>
+             <tr>
+                <td><strong>Yüksek seviye (Bağımlılık)</strong></td>
+                <td>Günlük kullanım</td>
+                <td>Çevrenize yardım isteyin ve profesyonel destek alın. Gerekirse bilgisayar, tablet ve telefonsuz bir gün geçirin.</td>
+            <!-- Diğer satırları buraya ekleyebilirsin -->
+        </tbody>
+    </table>
+</div>
+<div class="test-results-container">
+    <h2>Teknoloji Bağımlılığı Çözüm Önerileri</h2>
+    <table class="styled-table">
+        <thead>
+            <tr>
+                <th>Seviye</th>
+                <th>Durum</th>
+                <th>Çözüm Önerisi</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td><strong>Düşük seviye (Merak)</strong></td>
+                <td>Nadir kullanım </td>
+                <td> Kendinizi haftada birkaç günlüğüne sınırlayın.</td>
+            
+            </tr>
+            <tr>
+                <td><strong>Orta seviye (Alışkanlık)</strong></td>
+                <td>Belirli rutinler</td>
+                <td></td>
+            </tr>
+             <tr>
+                <td><strong>Yüksek seviye (Bağımlılık)</strong></td>
+                <td>Günlük kullanım</td>
+                <td>Çevrenize yardım isteyin ve profesyonel destek alın. Gerekirse bilgisayar, tablet ve telefonsuz bir gün geçirin.
+                </td>
+            <!-- Diğer satırları buraya ekleyebilirsin -->
+        </tbody>
+    </table>
+</div>
+    <h3>🛡️ Acil Durum ve Takip Sistemi</h3>
+    <div class="highlight-box">
+        <h4>Sistem Durumu: <span id="sys-status" style="color: #e74c3c;">Kapalı</span></h4>
+        <p id="heart-rate-display">Nabız: <strong>-- BPM</strong></p>
+        <p id="location-display">Konum: <strong>Bilinmiyor</strong></p>
+    </div>
+
+    <button onclick="sistemiBaslat()" class="güvenlik" style="border:none; cursor:pointer; width:100%; background-color: var(--secondary);">
+        Sistemi Aktifleştir
+    </button>
+</div>
+
+<script>
+let sonEnlem = null;
+let sonBoylam = null;
+
+function sistemiBaslat() {
+    // Güvenlik.html'den gelen izni kontrol et
+    const onay = localStorage.getItem('sistemIzni');
+    
+    if (onay !== 'true') {
+        alert("⚠️ Hata: Önce 'Ana Sayfa > Her Vakit Güvenlik' kısmından izinleri onaylamalısınız!");
+        return;
+    }
+
+    document.getElementById('sys-status').innerText = "Aktif / Takip Ediliyor";
+    document.getElementById('sys-status').style.color = "#27ae60";
+
+    // Konum Takibini Başlat
+    if ("geolocation" in navigator) {
+        navigator.geolocation.watchPosition((position) => {
+            sonEnlem = position.coords.latitude;
+            sonBoylam = position.coords.longitude;
+            document.getElementById('location-display').innerHTML = `Konum: <strong>${sonEnlem.toFixed(4)}, ${sonBoylam.toFixed(4)}</strong>`;
+        });
+    }
+
+    // Nabız Simülasyonu (Java'dan çevrilen mantık)
+    setInterval(() => {
+        let nabiz = Math.floor(Math.random() * (135 - 70 + 1)) + 70;
+        document.getElementById('heart-rate-display').innerHTML = `Nabız: <strong>${nabiz} BPM</strong>`;
+
+        if (nabiz > 120) {
+            const numara = "905XXXXXXXXX"; // Buraya kendi numaranı yaz
+            const mesaj = `ACİL DURUM! Kullanıcının nabzı ${nabiz} BPM oldu. Konum: https://www.google.com/maps?q=${sonEnlem},${sonBoylam}`;
+            window.open(`https://api.whatsapp.com/send?phone=${numara}&text=${encodeURIComponent(mesaj)}`, '_blank');
+        }
+    }, 5000);
+}
+</script>
+
+    <!-- Destek Sekmesi -->
+    <div id="support" class="tab-content">
+        <h2>Profesyonel Destek Kanalları</h2>
+        <div class="highlight-box" style="background: #e8f5e9;">
+            <h4>📍 ALO 191 (Uyuşturucu İle Mücadele)</h4>
+            <p>7/24 ücretsiz ve isimsiz danışmanlık.</p>
+        </div>
+        <div class="highlight-box" style="background: #e8f5e9;">
+            <h4>📍 YEDAM (Yeşilay) - 115</h4>
+            <p>Psikolojik ve sosyal destek merkezi.</p>
+        </div>
+    </div>
+
+    <!-- Sağlıklı Yaşam Sekmesi -->
+    <div id="life" class="tab-content">
+        <h2>Yeni Bir Başlangıç</h2>
+        <p>Bağımlılıktan boşalan yeri sağlıklı alışkanlıklarla doldurmak, tekrarı önlemenin en iyi yoludur.</p>
+        <ul>
+            <li class="dot"><strong>Spor:</strong> Doğal dopamin kaynağıdır.</li>
+            <li class="dot"><strong>Uyku:</strong> Beyin onarımı için şarttır.</li>
+            <li class="dot"><strong>Beslenme:</strong> Vücudun toksinlerden arınmasını sağlar.</li>
+        </ul>
+    </div>
+</div>
+
+<footer>
+    &copy; 2026 Bağımlılıkla Mücadele Portalı | Sağlıklı Yarınlar İçin Yeşilay Ruhuyla.
+</footer>
+
+<script>
+    function switchTab(event, tabId) {
+        const tabs = document.querySelectorAll('.tab-content');
+        tabs.forEach(tab => tab.classList.remove('active-tab'));
+
+        const cards = document.querySelectorAll('.nav-card');
+        cards.forEach(card => card.classList.remove('active-card'));
+
+        document.getElementById(tabId).classList.add('active-tab');
+        event.currentTarget.classList.add('active-card');
+    }
+
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////7
+
+window.onload = function() {
+    const urlParams = new URLSearchParams(window.location.search);
+    const tab = urlParams.get('tab');
+    
+    // Eğer anketten yönlendirme geldiyse Mücadele sekmesini aç
+    if (tab === 'action') {
+        switchTab(null, 'action');
+        sonuclariIsle();
+    }
+}
+
+function sonuclariIsle() {
+    const puan = localStorage.getItem('sigaraSkoru');
+    const actionDiv = document.getElementById('action');
+
+    if (puan) {
+        let sonucHTML = "";
+        
+        // Düşük Seviye Bağımlılık (Önerdiğin 5 madde buraya eklendi)
+        if (puan <= 30) { 
+            sonucHTML = `
+                <div class="highlight-box" style="border-left: 8px solid #2ecc71; background: #f0fff4;">
+                    <h3>🎯 Analiz Sonucun: Düşük Seviye Bağımlılık (%${puan})</h3>
+                    <p>Harika! Fiziksel bağımlılığın henüz çok düşük. Bu alışkanlığı şu 5 adımla hemen bitirebilirsin:</p>
+                    <ul style="margin-left: 20px; line-height: 2;">
+                        <li><strong>1. Rutin Değişimi:</strong> Sigara içtiğin mekanları veya eşlikçileri (kahve vb.) bir süreliğine değiştir.</li>
+                        <li><strong>2. 5 Dakika Kuralı:</strong> İstek geldiğinde kronometreyi aç, 5 dakika sonra isteğin geçtiğini göreceksin.</li>
+                        <li><strong>3. Ağız Alışkanlığı:</strong> Yanında mutlaka şekersiz sakız, karanfil veya çubuk tarçın bulundur.</li>
+                        <li><strong>4. Görünmezlik:</strong> Paketini ve çakmağını ulaşılması zor bir yere koy, göz önünden kaldır.</li>
+                        <li><strong>5. Mikro Egzersiz:</strong> Anlık kriz geldiğinde 10 derin nefes al veya 15 şınav çekerek dopamin salgıla.</li>
+                    </ul>
+                </div>
+            `;
+        } else {
+            // Diğer seviyeler için genel mesaj
+            sonucHTML = `<div class="highlight-box"><h3>Skorun: %${puan}</h3><p>Daha fazla bilgi için aşağıdaki tabloları inceleyin.</p></div>`;
+        }
+
+        // Sonucu tablonun üstüne ekle
+        actionDiv.insertAdjacentHTML('afterbegin', sonucHTML);
+    }
+}
+
+</script>
+
+</body>
+</html>

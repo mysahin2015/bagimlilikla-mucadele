@@ -1,0 +1,229 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <title>Bağımlılık Anketi - Yeşilay</title>
+    <style>
+        /* Genel Arka Plan ve Yazı Tipi */
+        body {
+            background-color: #f0f2f5;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            padding: 40px 20px;
+            margin: 0;
+            color: #333;
+        }
+
+        /* Başlık Kartı */
+        .title {
+            background: linear-gradient(135deg, #2e7d32, #4caf50);
+            color: white;
+            padding: 30px;
+            border-radius: 15px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+            width: 100%;
+            max-width: 600px;
+            margin-bottom: 30px;
+            text-align: center;
+        }
+
+        .title h1 {
+            margin: 0;
+            font-size: 28px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .title h2 {
+            opacity: 0.9;
+            font-size: 16px;
+            font-weight: 300;
+            margin-top: 10px;
+        }
+
+        /* Form Tasarımı */
+        form {
+            background-color: #fff;
+            padding: 40px;
+            border-radius: 15px;
+            box-shadow: 0 10px 25px rgba(0,0,0,0.05);
+            width: 100%;
+            max-width: 600px;
+            box-sizing: border-box;
+        }
+
+        label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: 600;
+            color: #2e7d32;
+        }
+
+        input[type="text"], select {
+            width: 100%;
+            padding: 12px 15px;
+            margin-bottom: 20px;
+            border: 2px solid #e0e0e0;
+            border-radius: 8px;
+            font-size: 16px;
+            transition: border-color 0.3s;
+            box-sizing: border-box;
+        }
+
+        input[type="text"]:focus {
+            border-color: #4caf50;
+            outline: none;
+        }
+
+        /* Cinsiyet Bölümü */
+        .gender-box {
+            background: #f9f9f9;
+            padding: 15px;
+            border-radius: 8px;
+            border: 1px solid #eee;
+            margin-bottom: 20px;
+        }
+
+        .gender-option {
+            display: flex;
+            align-items: center;
+            margin-bottom: 5px;
+            font-weight: normal;
+            cursor: pointer;
+        }
+
+        input[type="radio"] {
+            margin-right: 10px;
+            accent-color: #4caf50;
+            transform: scale(1.2);
+        }
+
+        /* Gönder Butonu */
+        #post {
+            width: 100%;
+            background-color: #2e7d32;
+            color: white;
+            padding: 15px;
+            border: none;
+            border-radius: 8px;
+            font-size: 18px;
+            font-weight: bold;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        #post:hover {
+            background-color: #1b5e20;
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+        }
+
+        /* Test Linkleri */
+        .link-container {
+            margin-top: 30px;
+            display: flex;
+            gap: 15px;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        .linkbox {
+            padding: 12px 25px;
+            background-color: white;
+            color: #2e7d32;
+            text-decoration: none;
+            border-radius: 10px;
+            border: 2px solid #2e7d32;
+            font-weight: bold;
+            transition: all 0.3s;
+        }
+
+        .linkbox:hover {
+            background-color: #2e7d32;
+            color: white;
+        }
+        /* Geri Dönüş Linki */
+        a.back-link {
+            font-size: 200%;
+            text-decoration: none;
+            color: #2c3e50;
+            margin-bottom: 20px;
+            display: inline-block;
+            padding: 0%;
+            margin: 0%;
+            display: flex;
+        }
+
+    </style>
+</head>
+<body>
+    
+    <div class="title">
+        <h1>Bağımlılık Anketi</h1>
+        <h2>Lütfen aşağıdaki soruları dürüstçe cevaplayınız!</h2>
+        <a class="back-link" href="Anasayfa.html">&#8617;</a>
+    </div>
+
+    <form id="anketFormu">
+        <label for="name">Adınız-Soyadınız:</label>
+        <input type="text" id="name" name="name" placeholder="Adınızı giriniz...">
+
+        <label for="age">Yaşınız:</label>
+        <select name="age" id="age">
+            <option value="7-18">7-18</option>
+            <option value="18-25">18-25</option>
+            <option value="26-35">26-35</option>
+            <option value="36-45">36-45</option>
+            <option value="46-55">46-55</option>
+            <option value="56+">56+</option>
+        </select>
+
+        <label>Cinsiyetiniz:</label>
+        <div class="gender-box">
+            <label class="gender-option">
+                <input type="radio" name="gender" value="male"> Erkek
+            </label>
+            <label class="gender-option">
+                <input type="radio" name="gender" value="female"> Kadın
+            </label>
+            <label class="gender-option">
+                <input type="radio" name="gender" value="prefer_not_to_say" id="prefer_not_to_say"> Belirtmek istemiyorum
+            </label>
+        </div>
+
+        <button type="submit" id="post">Anketi Gönder</button>
+    </form>
+
+    <div class="link-container">
+        <a class="linkbox" href="Sigara.html" target="_blank">Sigara Bağımlılık Testi</a>
+        <a class="linkbox" href="Alkol.html" target="_blank">Alkol Bağımlılık Testi</a>
+         <a class="linkbox" href="Teknoloji.html" target="_blank">Teknoloji Bağımlılık Testi</a>
+          <a class="linkbox" href="Oyun.html" target="_blank">Oyun Bağımlılık Testi</a>
+    </div>
+
+    <script>
+        // Sayfa açıldığında "Belirtmek istemiyorum" seçili gelsin
+        document.getElementById("prefer_not_to_say").checked = true;
+
+        // Form gönderilme olayını yakala
+        document.getElementById("anketFormu").addEventListener("submit", function(event) {
+            // Sayfanın yenilenmesini engelle
+            event.preventDefault();
+
+            // İsim kontrolü
+            const isim = document.getElementById("name").value.trim();
+
+            if (isim === "") {
+                alert("Lütfen adınızı ve soyadınızı giriniz.");
+            } else {
+                alert("Sayın " + isim + ", anketiniz başarıyla gönderildi. Teşekkür ederiz!");
+                // İsteğe bağlı: Formu temizle
+                // this.reset();
+            }
+        });
+    </script>
+
+</body>
+</html>

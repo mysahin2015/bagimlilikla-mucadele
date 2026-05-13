@@ -1,0 +1,271 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Teknoloji Bağımlılığı Testi | Yeşilay Temalı</title>
+
+    <style>
+        body {
+            background-color: #f0f7f4;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            font-size: 17px;
+            line-height: 1.6;
+            margin: 40px auto;
+            max-width: 650px;
+            padding: 20px;
+            color: #2d3436;
+        }
+
+        .container {
+            background-color: #ffffff;
+            border-radius: 20px;
+            padding: 35px;
+            box-shadow: 0 15px 35px rgba(31, 106, 56, 0.1);
+            border-top: 8px solid #1f6a38;
+        }
+
+        h1 {
+            color: #1f6a38;
+            text-align: center;
+            margin-bottom: 10px;
+            font-weight: 800;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .subtitle {
+            text-align: center;
+            color: #558b2f;
+            margin-bottom: 30px;
+            font-size: 15px;
+            font-weight: 500;
+        }
+
+        .question-block {
+            margin-bottom: 25px;
+            padding: 18px;
+            border-radius: 12px;
+            background-color: #ffffff;
+            border: 1px solid #e0eadd;
+            transition: all 0.3s ease;
+        }
+
+        .question-block:hover {
+            border-color: #a5d6a7;
+            background-color: #f9fff9;
+            transform: translateX(5px);
+        }
+
+        label.question-text {
+            font-weight: 600;
+            display: block;
+            margin-bottom: 15px;
+            color: #1b4d2e;
+        }
+
+        .options-group {
+            display: flex;
+            gap: 20px;
+        }
+
+        .option {
+            display: flex;
+            align-items: center;
+            cursor: pointer;
+            font-size: 16px;
+            padding: 8px 15px;
+            border-radius: 20px;
+            background-color: #f1f8e9;
+            transition: all 0.2s;
+            border: 1px solid transparent;
+        }
+
+        .option:hover {
+            background-color: #dcedc8;
+            border-color: #1f6a38;
+        }
+
+        input[type="radio"] {
+            margin-right: 10px;
+            width: 18px;
+            height: 18px;
+            cursor: pointer;
+            accent-color: #1f6a38;
+        }
+
+        #submit-btn {
+            display: block;
+            width: 100%;
+            padding: 18px;
+            background-color: #1f6a38;
+            color: white;
+            border: none;
+            font-size: 18px;
+            font-weight: bold;
+            cursor: pointer;
+            border-radius: 10px;
+            margin-top: 30px;
+            transition: all 0.3s;
+            box-shadow: 0 6px 20px rgba(31, 106, 56, 0.3);
+        }
+
+        #submit-btn:hover {
+            background-color: #144d27;
+            box-shadow: 0 8px 25px rgba(31, 106, 56, 0.4);
+        }
+
+        .footer-note {
+            font-size: 13px;
+            color: #6d8c78;
+            text-align: center;
+            margin-top: 25px;
+            border-top: 1px solid #eee;
+            padding-top: 15px;
+        }
+
+        /* HATA BURADAYDI: Aşağıdaki süslü parantez kapatılmamıştı */
+        .header-icon {
+            display: flex;
+            margin: 0 auto 15px;
+            width: 50px;
+            height: 50px;
+            background-color: #1f6a38;
+            border-radius: 50%;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 24px;
+            font-weight: bold;
+        }
+
+        .back-link {
+            font-size: 200%;
+            text-decoration: none;
+            color: #2c3e50;
+            margin-bottom: 20px;
+            display: inline-block;
+            padding: 0%;
+            margin: 0%;
+        }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <a class="back-link" href="Adsoyad.html">&#8617;</a>
+    <div class="header-icon">✓</div>
+    <h1>TEKNOLOJİ TESTİ</h1>
+    <p class="subtitle">Bağımlı olma, özgür ol!</p>
+
+    <form id="teknolojiTesti">
+        <div class="question-block">
+            <label class="question-text">1. Gün içinde planladığınızdan daha fazla süre telefon, bilgisayar veya tablette vakit geçiriyor musunuz?</label>
+            <div class="options-group">
+                <label class="option"><input type="radio" name="q1" value="10" required> Evet</label>
+                <label class="option"><input type="radio" name="q1" value="0"> Hayır</label>
+            </div>
+        </div>
+
+        <div class="question-block">
+            <label class="question-text">2. Teknoloji kullanımı nedeniyle işlerinizi veya sorumluluklarınızı ertelediğiniz oluyor mu?</label>
+            <div class="options-group">
+                <label class="option"><input type="radio" name="q2" value="10"> Evet</label>
+                <label class="option"><input type="radio" name="q2" value="0"> Hayır</label>
+            </div>
+        </div>
+
+        <div class="question-block">
+            <label class="question-text">3. İnternet veya sosyal medya kullanamadığınızda huzursuz hissediyor musunuz?</label>
+            <div class="options-group">
+                <label class="option"><input type="radio" name="q3" value="10"> Evet</label>
+                <label class="option"><input type="radio" name="q3" value="0"> Hayır</label>
+            </div>
+        </div>
+
+        <div class="question-block">
+            <label class="question-text">4. Uyku saatinizden geç olmasına rağmen ekran başında kalıyor musunuz?</label>
+            <div class="options-group">
+                <label class="option"><input type="radio" name="q4" value="10"> Evet</label>
+                <label class="option"><input type="radio" name="q4" value="0"> Hayır</label>
+            </div>
+        </div>
+
+        <div class="question-block">
+            <label class="question-text">5. Yakın çevreniz teknoloji kullanımınız hakkında sizi uyardı mı?</label>
+            <div class="options-group">
+                <label class="option"><input type="radio" name="q5" value="10"> Evet</label>
+                <label class="option"><input type="radio" name="q5" value="0"> Hayır</label>
+            </div>
+        </div>
+
+        <div class="question-block">
+            <label class="question-text">6. Yemek yerken veya bir işle uğraşırken sürekli telefon kontrol ediyor musunuz?</label>
+            <div class="options-group">
+                <label class="option"><input type="radio" name="q6" value="10"> Evet</label>
+                <label class="option"><input type="radio" name="q6" value="0"> Hayır</label>
+            </div>
+        </div>
+
+        <div class="question-block">
+            <label class="question-text">7. Gün içinde farkında olmadan sık sık sosyal medya uygulamalarını açıyor musunuz?</label>
+            <div class="options-group">
+                <label class="option"><input type="radio" name="q7" value="10"> Evet</label>
+                <label class="option"><input type="radio" name="q7" value="0"> Hayır</label>
+            </div>
+        </div>
+
+        <div class="question-block">
+            <label class="question-text">8. Teknoloji kullanımı nedeniyle yüz yüze iletişiminiz azaldı mı?</label>
+            <div class="options-group">
+                <label class="option"><input type="radio" name="q8" value="10"> Evet</label>
+                <label class="option"><input type="radio" name="q8" value="0"> Hayır</label>
+            </div>
+        </div>
+
+        <div class="question-block">
+            <label class="question-text">9. Ekran sürenizi azaltmayı denediğiniz halde başarılı olamadınız mı?</label>
+            <div class="options-group">
+                <label class="option"><input type="radio" name="q9" value="10"> Evet</label>
+                <label class="option"><input type="radio" name="q9" value="0"> Hayır</label>
+            </div>
+        </div>
+
+        <div class="question-block">
+            <label class="question-text">10. Boş zamanlarınızın büyük kısmını dijital cihazlarla geçiriyor musunuz?</label>
+            <div class="options-group">
+                <label class="option"><input type="radio" name="q10" value="10"> Evet</label>
+                <label class="option"><input type="radio" name="q10" value="0"> Hayır</label>
+            </div>
+        </div>
+
+        <button type="submit" id="submit-btn">ANALİZ ET VE SONUCU GÖR</button>
+    </form>
+    
+    <p class="footer-note">Bu test farkındalık amaçlıdır. Bilinçli kullanım özgürlüktür.</p>
+</div>
+
+<script>
+    document.getElementById('teknolojiTesti').addEventListener('submit', function(event) {
+        event.preventDefault();
+        const formData = new FormData(this);
+        let puan = 0;
+        let say = 0;
+
+        for (let value of formData.values()) {
+            puan += parseInt(value);
+            say++;
+        }
+
+        if (say < 10) {
+            alert("Lütfen tüm soruları yanıtlayın.");
+            return;
+        }
+
+        let durum = puan <= 30 ? "Düşük Risk" : (puan <= 60 ? "Orta Risk" : "Yüksek Risk");
+        alert("Bağımlılık Skorunuz: %" + puan + "\nDurum: " + durum);
+    });
+</script>
+
+</body>
+</html>

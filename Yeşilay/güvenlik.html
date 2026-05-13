@@ -1,0 +1,197 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Güvenlik Ayarları</title>
+    <style>
+        :root {
+            --primary-color: #10b981; /* Modern Emerald Yeşil */
+            --primary-dark: #059669;
+            --bg-color: #f8fafc;
+            --text-color: #1e293b;
+            --card-bg: #ffffff;
+        }
+
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            background-color: var(--bg-color);
+            color: var(--text-color);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            margin: 0;
+        }
+
+        .container {
+            width: 100%;
+            max-width: 450px;
+            padding: 20px;
+        }
+
+        .header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 24px;
+        }
+
+        h2 {
+            font-size: 1.5rem;
+            font-weight: 700;
+            margin: 0;
+            color: #0f172a;
+        }
+
+        .back-link {
+            text-decoration: none;
+            background-color: #e2e8f0;
+            color: #475569;
+            width: 40px;
+            height: 40px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 10px;
+            transition: all 0.2s;
+            font-size: 1.2rem;
+        }
+
+        .back-link:hover {
+            background-color: #cbd5e1;
+            transform: translateX(-3px);
+        }
+
+        .box {
+            background-color: var(--card-bg);
+            border-radius: 20px;
+            padding: 32px;
+            box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.05), 0 8px 10px -6px rgba(0, 0, 0, 0.05);
+            border: 1px solid #f1f5f9;
+        }
+
+        h3 {
+            margin-top: 0;
+            font-size: 1.1rem;
+            color: #334155;
+        }
+
+        p {
+            font-size: 0.9rem;
+            line-height: 1.6;
+            color: #64748b;
+            background: #f1f5f9;
+            padding: 15px;
+            border-radius: 12px;
+            margin-bottom: 24px;
+        }
+
+        .checkbox-group {
+            display: flex;
+            align-items: flex-start;
+            gap: 12px;
+            margin-bottom: 16px;
+            cursor: pointer;
+            font-size: 0.95rem;
+            user-select: none;
+        }
+
+        .checkbox-group input {
+            width: 18px;
+            height: 18px;
+            cursor: pointer;
+            accent-color: var(--primary-color);
+        }
+
+        #button {
+            width: 100%;
+            background-color: var(--primary-color);
+            color: white;
+            border: none;
+            padding: 14px;
+            border-radius: 12px;
+            font-size: 1rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            margin-top: 10px;
+        }
+
+        #button:hover {
+            background-color: var(--primary-dark);
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(16, 185, 129, 0.3);
+        }
+
+        #button:active {
+            transform: translateY(0);
+        }
+
+        /* Hata durumunda buton sallanma efekti */
+        .shake {
+            animation: shake 0.4s ease-in-out;
+        }
+
+        @keyframes shake {
+            0%, 100% { transform: translateX(0); }
+            25% { transform: translateX(-5px); }
+            75% { transform: translateX(5px); }
+        }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <div class="header">
+        <h2>Güvenlik Ayarları</h2>
+        <a class="back-link" href="Anasayfa.html" title="Geri Dön">←</a>
+    </div>
+
+    <div class="box">
+        <h3>Şartlar ve Koşullar</h3>
+        <p>
+            Bu ayar sayesinde cihazınız kalp atış hızınızı takip edebilir ve 
+            uygulamanın WhatsApp rehberinize güvenli erişimine izin verirsiniz.
+        </p>
+        
+        <label class="checkbox-group">
+            <input type="checkbox" id="terms">
+            <span>Yukarıdaki şartları okudum ve kabul ediyorum.</span>
+        </label>
+
+        <label class="checkbox-group">
+            <input type="checkbox" id="permission">
+            <span>WhatsApp erişimine izin ver</span>
+        </label>
+
+        <button type="button" id="button">Ayarları Kaydet</button>
+    </div>
+</div>
+
+
+
+<script>
+    const btn = document.getElementById("button");
+    const terms = document.getElementById("terms");
+    const permission = document.getElementById("permission");
+
+    btn.onclick = function () {
+        if (terms.checked && permission.checked) {
+            // İZNİ KAYDET (Kritik nokta burası)
+            localStorage.setItem('sistemIzni', 'true'); 
+            
+            alert("✅ Güvenlik ayarları başarıyla kaydedildi.");
+            btn.style.backgroundColor = "#64748b";
+            btn.innerText = "Kaydedildi";
+            btn.disabled = true;
+        } else {
+            btn.classList.add('shake');
+            setTimeout(() => btn.classList.remove('shake'), 400);
+            alert("⚠️ Lütfen devam etmek için tüm onay kutularını işaretleyin.");
+        }
+    };
+</script>
+
+</body>
+</html>

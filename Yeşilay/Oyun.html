@@ -1,0 +1,258 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Oyun Bağımlılığı Testi</title>
+
+    <style>
+        body {
+            background-color: #f0f4f8;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            font-size: 17px;
+            line-height: 1.6;
+            margin: 40px auto;
+            max-width: 650px;
+            padding: 20px;
+            color: #333;
+        }
+
+        .container {
+            background-color: #ffffff;
+            border-radius: 15px;
+            padding: 30px;
+            box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+            border: 1px solid #e1e8ed;
+        }
+
+        h1 {
+            color: #2c3e50;
+            text-align: center;
+            border-bottom: 2px solid #3498db;
+            padding-bottom: 15px;
+            margin-bottom: 30px;
+        }
+
+        .question-block {
+            margin-bottom: 25px;
+            padding: 15px;
+            border-radius: 8px;
+            background-color: #fafafa;
+            transition: background-color 0.3s;
+        }
+
+        .question-block:hover {
+            background-color: #f2f7fb;
+        }
+
+        label.question-text {
+            font-weight: 600;
+            display: block;
+            margin-bottom: 12px;
+            color: #2c3e50;
+        }
+
+        .options-group {
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+        }
+
+        .option {
+            display: flex;
+            align-items: center;
+            cursor: pointer;
+            font-size: 16px;
+        }
+
+        input[type="radio"] {
+            margin-right: 10px;
+            width: 18px;
+            height: 18px;
+            cursor: pointer;
+        }
+
+        #submit-btn {
+            display: block;
+            width: 100%;
+            padding: 15px;
+            background-color: #3498db;
+            color: white;
+            border: none;
+            font-size: 18px;
+            font-weight: bold;
+            cursor: pointer;
+            border-radius: 8px;
+            margin-top: 20px;
+            transition: background-color 0.3s;
+        }
+
+        #submit-btn:hover {
+            background-color: #2980b9;
+        }
+
+        .footer-note {
+            font-size: 14px;
+            color: #7f8c8d;
+            text-align: center;
+            margin-top: 20px;
+        }
+        .back-link {
+            font-size: 200%;
+            text-decoration: none;
+            color: #2c3e50;
+            margin-bottom: 20px;
+            display: inline-block;
+            padding: 0%;
+            margin: 0%;
+        }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <a class="back-link" href="Adsoyad.html">&#8617;</a>
+    <h1>Oyun Bağımlılığı Testi</h1>
+
+    <form id="oyunTesti">
+        <div class="question-block">
+            <label class="question-text">1. Gün içinde planladığınızdan daha uzun süre oyun oynadığınız oluyor mu?</label>
+            <div class="options-group">
+                <label class="option"><input type="radio" name="q1" value="10" required> Evet, sık sık</label>
+                <label class="option"><input type="radio" name="q1" value="5"> Bazen</label>
+                <label class="option"><input type="radio" name="q1" value="0"> Hayır, asla</label>
+            </div>
+        </div>
+
+        <div class="question-block">
+            <label class="question-text">2. “Son maç” ya da “son el” deyip saatlerce devam ettiğiniz oluyor mu?</label>
+            <div class="options-group">
+                <label class="option"><input type="radio" name="q2" value="10"> Evet, her zaman</label>
+                <label class="option"><input type="radio" name="q2" value="5"> Ara sıra</label>
+                <label class="option"><input type="radio" name="q2" value="0"> Hayır</label>
+            </div>
+        </div>
+
+        <div class="question-block">
+            <label class="question-text">3. Oyun yüzünden uyku saatinizi geciktirdiğiniz oluyor mu?</label>
+            <div class="options-group">
+                <label class="option"><input type="radio" name="q3" value="10"> Evet</label>
+                <label class="option"><input type="radio" name="q3" value="5"> Nadiren</label>
+                <label class="option"><input type="radio" name="q3" value="0"> Hayır</label>
+            </div>
+        </div>
+
+        <div class="question-block">
+            <label class="question-text">4. Ders, iş veya günlük sorumluluklarınızı oyun nedeniyle ertelediğiniz oluyor mu?</label>
+            <div class="options-group">
+                <label class="option"><input type="radio" name="q4" value="10"> Evet, genelde</label>
+                <label class="option"><input type="radio" name="q4" value="5"> Bazen</label>
+                <label class="option"><input type="radio" name="q4" value="0"> Hayır</label>
+            </div>
+        </div>
+
+        <div class="question-block">
+            <label class="question-text">5. Oyun oynayamadığınız zaman canınızın sıkıldığı veya huzursuz hissettiğiniz oluyor mu?</label>
+            <div class="options-group">
+                <label class="option"><input type="radio" name="q5" value="10"> Çok fazla</label>
+                <label class="option"><input type="radio" name="q5" value="5"> Biraz</label>
+                <label class="option"><input type="radio" name="q5" value="0"> Hayır</label>
+            </div>
+        </div>
+
+        <div class="question-block">
+            <label class="question-text">6. Arkadaşlarınız dışarı çağırdığında bazen oyunda kalmayı tercih ediyor musunuz?</label>
+            <div class="options-group">
+                <label class="option"><input type="radio" name="q6" value="10"> Evet</label>
+                <label class="option"><input type="radio" name="q6" value="5"> Bazen</label>
+                <label class="option"><input type="radio" name="q6" value="0"> Hayır</label>
+            </div>
+        </div>
+
+        <div class="question-block">
+            <label class="question-text">7. Yakın çevreniz oyun süreniz hakkında sizi uyardı mı?</label>
+            <div class="options-group">
+                <label class="option"><input type="radio" name="q7" value="10"> Evet, çok kez</label>
+                <label class="option"><input type="radio" name="q7" value="5"> Birkaç kez</label>
+                <label class="option"><input type="radio" name="q7" value="0"> Hayır</label>
+            </div>
+        </div>
+
+        <div class="question-block">
+            <label class="question-text">8. Stresli veya moraliniz bozuk olduğunda oyun oynamaya yöneliyor musunuz?</label>
+            <div class="options-group">
+                <label class="option"><input type="radio" name="q8" value="10"> Kesinlikle</label>
+                <label class="option"><input type="radio" name="q8" value="5"> Bazen</label>
+                <label class="option"><input type="radio" name="q8" value="0"> Hayır</label>
+            </div>
+        </div>
+
+        <div class="question-block">
+            <label class="question-text">9. Oyun oynarken zamanın nasıl geçtiğini fark etmediğiniz oluyor mu?</label>
+            <div class="options-group">
+                <label class="option"><input type="radio" name="q9" value="10"> Her zaman</label>
+                <label class="option"><input type="radio" name="q9" value="5"> Sıklıkla</label>
+                <label class="option"><input type="radio" name="q9" value="0"> Hayır</label>
+            </div>
+        </div>
+
+        <div class="question-block">
+            <label class="question-text">10. Oyun sürenizi azaltmayı düşünüp bunu sürdüremediğiniz oldu mu?</label>
+            <div class="options-group">
+                <label class="option"><input type="radio" name="q10" value="10"> Evet</label>
+                <label class="option"><input type="radio" name="q10" value="5"> Denedim ama zorlandım</label>
+                <label class="option"><input type="radio" name="q10" value="0"> Hayır / Gerek duymadım</label>
+            </div>
+        </div>
+
+        <button type="submit" id="submit-btn">Sonucu Analiz Et</button>
+    </form>
+    
+    <p class="footer-note">Bu test bilgilendirme amaçlıdır, tıbbi bir teşhis koymaz.</p>
+</div>
+
+<script>
+    document.getElementById('oyunTesti').addEventListener('submit', function(event) {
+        event.preventDefault();
+
+        const formData = new FormData(this);
+        let toplamPuan = 0;
+        let cevaplananSoru = 0;
+
+        for (let value of formData.values()) {
+            toplamPuan += parseInt(value);
+            cevaplananSoru++;
+        }
+
+        if (cevaplananSoru < 10) {
+            alert("Lütfen tüm soruları cevaplayın!");
+            return; // Burada fonksiyon durur
+        }
+
+        // --- Hata Buradan Sonrasıydı, Eksik Kısımlar Eklendi ---
+        
+        let seviye = "";
+        if (toplamPuan <= 30) {
+            seviye = "Düşük Seviye";
+        } else if (toplamPuan <= 70) {
+            seviye = "Orta Seviye";
+        } else {
+            seviye = "Yüksek Seviye";
+        }
+
+        
+    
+         document.getElementById("submit-btn").onclick;  if (toplamPuan <= 30) {
+           alert("Toplam Puanınız: " + "%" + toplamPuan + "\nBağımlılık Seviyesi: " + seviye + "" + " oyun bağımlısısınız! Ana sayfadaki mücadele bölümünden tavsiye alın ve günlük yaşamınızda kendinize yeni hedefler koyun. Unutmayın, bağımlılıktan kurtuluşun ilk adımı, başlamaktır.")
+        } else if (toplamPuan <= 70) {
+            alert("Toplam Puanınız: " + "%" + toplamPuan + "\nBağımlılık Seviyesi: " + seviye + "" +" oyun bağımlısısınız! Çevrenizden destek alın ve iradenizi disiplinle düzeltin! ")
+        }      else  {
+            alert("Toplam Puanınız: " + "%" + toplamPuan + "\nBağımlılık Seviyesi: " + seviye + "" +" oyun bağımlısısınız! Çevrenizi tam odak kendinize yönlendirmeye çalışın. Ayrıca destek hatlarından profosyönel destek almanızı tavsiye ederiz. ")
+        }
+
+
+    }); // Olay dinleyiciyi kapatan parantez ve süslü parantez burasıdır.
+
+    
+
+</script>
