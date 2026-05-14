@@ -4,7 +4,6 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Oyun Bağımlılığı Testi</title>
-
     <style>
         body {
             background-color: #f0f4f8;
@@ -16,7 +15,6 @@
             padding: 20px;
             color: #333;
         }
-
         .container {
             background-color: #ffffff;
             border-radius: 15px;
@@ -24,7 +22,6 @@
             box-shadow: 0 10px 25px rgba(0,0,0,0.1);
             border: 1px solid #e1e8ed;
         }
-
         h1 {
             color: #2c3e50;
             text-align: center;
@@ -32,7 +29,6 @@
             padding-bottom: 15px;
             margin-bottom: 30px;
         }
-
         .question-block {
             margin-bottom: 25px;
             padding: 15px;
@@ -40,38 +36,32 @@
             background-color: #fafafa;
             transition: background-color 0.3s;
         }
-
         .question-block:hover {
             background-color: #f2f7fb;
         }
-
         label.question-text {
             font-weight: 600;
             display: block;
             margin-bottom: 12px;
             color: #2c3e50;
         }
-
         .options-group {
             display: flex;
             flex-direction: column;
             gap: 8px;
         }
-
         .option {
             display: flex;
             align-items: center;
             cursor: pointer;
             font-size: 16px;
         }
-
         input[type="radio"] {
             margin-right: 10px;
             width: 18px;
             height: 18px;
             cursor: pointer;
         }
-
         #submit-btn {
             display: block;
             width: 100%;
@@ -86,11 +76,9 @@
             margin-top: 20px;
             transition: background-color 0.3s;
         }
-
         #submit-btn:hover {
             background-color: #2980b9;
         }
-
         .footer-note {
             font-size: 14px;
             color: #7f8c8d;
@@ -98,13 +86,11 @@
             margin-top: 20px;
         }
         .back-link {
-            font-size: 200%;
+            font-size: 32px;
             text-decoration: none;
             color: #2c3e50;
-            margin-bottom: 20px;
             display: inline-block;
-            padding: 0%;
-            margin: 0%;
+            margin-bottom: 10px;
         }
     </style>
 </head>
@@ -212,47 +198,43 @@
 </div>
 
 <script>
-    document.getElementById('oyunTesti').addEventListener('submit', function(event) {
-        event.preventDefault();
+document.getElementById('oyunTesti').addEventListener('submit', function(event) {
+    event.preventDefault();
 
-        const formData = new FormData(this);
-        let toplamPuan = 0;
-        let cevaplananSoru = 0;
+    const formData = new FormData(this);
+    let toplamPuan = 0;
+    let cevaplananSoru = 0;
 
-        for (let value of formData.values()) {
-            toplamPuan += parseInt(value);
-            cevaplananSoru++;
-        }
+    for (let value of formData.values()) {
+        toplamPuan += parseInt(value);
+        cevaplananSoru++;
+    }
 
-        if (cevaplananSoru < 10) {
-            alert("Lütfen tüm soruları cevaplayın!");
-            return; // Burada fonksiyon durur
-        }
+    if (cevaplananSoru < 10) {
+        alert("Lütfen testi tamamlamak için tüm soruları cevaplayın!");
+        return;
+    }
 
-        // --- Hata Buradan Sonrasıydı, Eksik Kısımlar Eklendi ---
-        
-        let seviye = "";
-        if (toplamPuan <= 30) {
-            seviye = "Düşük Seviye";
-        } else if (toplamPuan <= 70) {
-            seviye = "Orta Seviye";
-        } else {
-            seviye = "Yüksek Seviye";
-        }
+    let seviye = "";
+    let oneriler = "";
 
-        
-    
-         document.getElementById("submit-btn").onclick;  if (toplamPuan <= 30) {
-           alert("Toplam Puanınız: " + "%" + toplamPuan + "\nBağımlılık Seviyesi: " + seviye + "" + " oyun bağımlısısınız! Ana sayfadaki mücadele bölümünden tavsiye alın ve günlük yaşamınızda kendinize yeni hedefler koyun. Unutmayın, bağımlılıktan kurtuluşun ilk adımı, başlamaktır.")
-        } else if (toplamPuan <= 70) {
-            alert("Toplam Puanınız: " + "%" + toplamPuan + "\nBağımlılık Seviyesi: " + seviye + "" +" oyun bağımlısısınız! Çevrenizden destek alın ve iradenizi disiplinle düzeltin! ")
-        }      else  {
-            alert("Toplam Puanınız: " + "%" + toplamPuan + "\nBağımlılık Seviyesi: " + seviye + "" +" oyun bağımlısısınız! Çevrenizi tam odak kendinize yönlendirmeye çalışın. Ayrıca destek hatlarından profosyönel destek almanızı tavsiye ederiz. ")
-        }
+    if (toplamPuan <= 30) {
+        seviye = "Düşük Risk / Bilinçli Kullanıcı";
+        oneriler = "Harika! Oyun oynama alışkanlığınız şu an için kontrol altında görünüyor.\n\n• Öneri: Bu dengeyi korumak için sosyal aktivitelerinize zaman ayırmayı sürdürün. Oyun oynamak keyifli bir hobi olabilir, ancak çeşitli ilgi alanlarına sahip olmak sağlıklı bir yaşam tarzının parçasıdır.";
+    } 
+    else if (toplamPuan <= 70) {
+        seviye = "Orta Risk / Sınırda Kullanım";
+        oneriler = "Dikkat: Oyun alışkanlığınız günlük yaşamınızı etkilemeye başlamış.\n\n• Öneri: Günlük oyun sürenize mutlaka bir üst sınır (Örn: 2 saat) koyun. Ayrıca çevrenize, hobilerinize ve sorumluluklarınıza daha fazla zaman ayırmaya çalışın.";
+    } 
+    else {
+        seviye = "Yüksek Risk / Bağımlılık Eğilimi";
+        oneriler = "Önemli Uyarı: Sonuçlar ciddi bir oyun bağımlılığı riskine işaret ediyor.\n\n• Eylem Planı: Profesyonel destek almaktan çekinmeyin (YEDAM - 115), oyun sürenizi kademeli olarak azaltmaya başlayın ve alternatif sosyal aktiviteler bulun.";
+    }
 
+    const sonucMesaji = `📊 TEST SONUCU\n--------------------------\nPuan: ${toplamPuan}/100\nDurum: ${seviye}\n\n${oneriler}\n\nUnutmayın: İlk adım farkındalıktır.`;
 
-    }); // Olay dinleyiciyi kapatan parantez ve süslü parantez burasıdır.
-
-    
-
+    alert(sonucMesaji);
+});
 </script>
+</body>
+</html>

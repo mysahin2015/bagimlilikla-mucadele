@@ -28,7 +28,7 @@
         h1 {
             color: #1f6a38;
             text-align: center;
-            margin-bottom: 10px;
+            margin-bottom: 5px;
             font-weight: 800;
             text-transform: uppercase;
             letter-spacing: 1px;
@@ -43,7 +43,7 @@
         }
 
         .question-block {
-            margin-bottom: 25px;
+            margin-bottom: 20px;
             padding: 18px;
             border-radius: 12px;
             background-color: #ffffff;
@@ -115,16 +115,6 @@
             box-shadow: 0 8px 25px rgba(31, 106, 56, 0.4);
         }
 
-        .footer-note {
-            font-size: 13px;
-            color: #6d8c78;
-            text-align: center;
-            margin-top: 25px;
-            border-top: 1px solid #eee;
-            padding-top: 15px;
-        }
-
-        /* HATA BURADAYDI: Aşağıdaki süslü parantez kapatılmamıştı */
         .header-icon {
             display: flex;
             margin: 0 auto 15px;
@@ -140,13 +130,20 @@
         }
 
         .back-link {
-            font-size: 200%;
+            font-size: 32px;
             text-decoration: none;
             color: #2c3e50;
-            margin-bottom: 20px;
             display: inline-block;
-            padding: 0%;
-            margin: 0%;
+            margin-bottom: 10px;
+        }
+
+        .footer-note {
+            font-size: 13px;
+            color: #6d8c78;
+            text-align: center;
+            margin-top: 25px;
+            border-top: 1px solid #eee;
+            padding-top: 15px;
         }
     </style>
 </head>
@@ -160,7 +157,7 @@
 
     <form id="teknolojiTesti">
         <div class="question-block">
-            <label class="question-text">1. Gün içinde planladığınızdan daha fazla süre telefon, bilgisayar veya tablette vakit geçiriyor musunuz?</label>
+            <label class="question-text">1. Gün içinde planladığınızdan daha fazla süre ekran başında vakit geçiriyor musunuz?</label>
             <div class="options-group">
                 <label class="option"><input type="radio" name="q1" value="10" required> Evet</label>
                 <label class="option"><input type="radio" name="q1" value="0"> Hayır</label>
@@ -168,7 +165,7 @@
         </div>
 
         <div class="question-block">
-            <label class="question-text">2. Teknoloji kullanımı nedeniyle işlerinizi veya sorumluluklarınızı ertelediğiniz oluyor mu?</label>
+            <label class="question-text">2. Teknoloji kullanımı nedeniyle sorumluluklarınızı ertelediğiniz oluyor mu?</label>
             <div class="options-group">
                 <label class="option"><input type="radio" name="q2" value="10"> Evet</label>
                 <label class="option"><input type="radio" name="q2" value="0"> Hayır</label>
@@ -176,7 +173,7 @@
         </div>
 
         <div class="question-block">
-            <label class="question-text">3. İnternet veya sosyal medya kullanamadığınızda huzursuz hissediyor musunuz?</label>
+            <label class="question-text">3. İnternet kullanamadığınızda huzursuz hissediyor musunuz?</label>
             <div class="options-group">
                 <label class="option"><input type="radio" name="q3" value="10"> Evet</label>
                 <label class="option"><input type="radio" name="q3" value="0"> Hayır</label>
@@ -184,7 +181,7 @@
         </div>
 
         <div class="question-block">
-            <label class="question-text">4. Uyku saatinizden geç olmasına rağmen ekran başında kalıyor musunuz?</label>
+            <label class="question-text">4. Uyku saatiniz geçmesine rağmen ekran başında kalıyor musunuz?</label>
             <div class="options-group">
                 <label class="option"><input type="radio" name="q4" value="10"> Evet</label>
                 <label class="option"><input type="radio" name="q4" value="0"> Hayır</label>
@@ -200,7 +197,7 @@
         </div>
 
         <div class="question-block">
-            <label class="question-text">6. Yemek yerken veya bir işle uğraşırken sürekli telefon kontrol ediyor musunuz?</label>
+            <label class="question-text">6. Yemek yerken sürekli telefon kontrol ediyor musunuz?</label>
             <div class="options-group">
                 <label class="option"><input type="radio" name="q6" value="10"> Evet</label>
                 <label class="option"><input type="radio" name="q6" value="0"> Hayır</label>
@@ -208,7 +205,7 @@
         </div>
 
         <div class="question-block">
-            <label class="question-text">7. Gün içinde farkında olmadan sık sık sosyal medya uygulamalarını açıyor musunuz?</label>
+            <label class="question-text">7. Farkında olmadan sık sık sosyal medya uygulamalarını açıyor musunuz?</label>
             <div class="options-group">
                 <label class="option"><input type="radio" name="q7" value="10"> Evet</label>
                 <label class="option"><input type="radio" name="q7" value="0"> Hayır</label>
@@ -216,7 +213,7 @@
         </div>
 
         <div class="question-block">
-            <label class="question-text">8. Teknoloji kullanımı nedeniyle yüz yüze iletişiminiz azaldı mı?</label>
+            <label class="question-text">8. Teknoloji nedeniyle yüz yüze iletişiminiz azaldı mı?</label>
             <div class="options-group">
                 <label class="option"><input type="radio" name="q8" value="10"> Evet</label>
                 <label class="option"><input type="radio" name="q8" value="0"> Hayır</label>
@@ -232,7 +229,7 @@
         </div>
 
         <div class="question-block">
-            <label class="question-text">10. Boş zamanlarınızın büyük kısmını dijital cihazlarla geçiriyor musunuz?</label>
+            <label class="question-text">10. Boş zamanlarınızın çoğunu dijital cihazlarla mı geçiriyorsunuz?</label>
             <div class="options-group">
                 <label class="option"><input type="radio" name="q10" value="10"> Evet</label>
                 <label class="option"><input type="radio" name="q10" value="0"> Hayır</label>
@@ -258,12 +255,32 @@
         }
 
         if (say < 10) {
-            alert("Lütfen tüm soruları yanıtlayın.");
+            alert("Lütfen testi tamamlamak için tüm soruları yanıtlayın.");
             return;
         }
 
-        let durum = puan <= 30 ? "Düşük Risk" : (puan <= 60 ? "Orta Risk" : "Yüksek Risk");
-        alert("Bağımlılık Skorunuz: %" + puan + "\nDurum: " + durum);
+        let durum = "";
+        let mesaj = "";
+
+        if (puan <= 30) {
+            durum = "Düşük Risk / Bilinçli Kullanıcı";
+            mesaj = "Harika! Teknolojiyi bir araç olarak kullanmayı başarıyorsunuz. Kontrol sizin elinizde. Sosyal ilişkilerinizi stabil tutun ve çeşitli ilgi alanlarına zaman ayırmaya devam edin.";
+        } else if (puan <= 60) {
+            durum = "Orta Risk / Sınırda Kullanım";
+            mesaj = "Dikkat! Dijital dünya sizi yavaş yavaş içine çekiyor olabilir. Ekran sürenizi planlamaya başlayın. Sosyal ilişkilerinize verdiğiniz değeri arttırın.";
+        } else {
+            durum = "Yüksek Risk / Bağımlılık Eğilimi";
+            mesaj = "Önemli Uyarı! Teknoloji hayatınızın merkezine yerleşmiş durumda. Sosyal hayata dönmek için profesyonel destek almayı düşünebilirsiniz. Ayrıca cihazınızı sevdiğiniz bir şeyi yaparsanız almayı, yani ödül koymayı düşünebilirsiniz (Örn: 1 saat oyun oynarsanız 30 dakika dışarıda vakit geçirme gibi). Farkedeceksiniz ki sevdiğiniz şeyler teknoloji kadar keyifli olabilir.";
+        }
+
+        alert(
+            "📊 ANALİZ SONUCU\n" +
+            "--------------------------\n" +
+            "Bağımlılık Skoru: %" + puan + "\n" +
+            "Durum: " + durum + "\n\n" +
+            mesaj + "\n\n" +
+            "Unutmayın: Ekranı kapatın, hayata bağlanın!"
+        );
     });
 </script>
 

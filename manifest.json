@@ -5,6 +5,7 @@
   "display": "standalone",
   "background_color": "#ffffff",
   "theme_color": "#4CAF50",
+  "border_radius": "10px",
   "icons": [
     {
       "src": "icon-192.png",
